@@ -54,9 +54,8 @@ steps:
 
 ## Details
 
-
-Uses `actions/setup-python@v5`. Only python `3.8` - `3.10` versions prior to `3.8`
-are not tested since they are EOL now.
+Uses `actions/setup-python@v5`. Only python `3.8` - `3.12` versions are tested.
+Python `3.x` versions prior to `3.8` are not tested since they are EOL now.
 Any python `2.x` versions are unsupported! You can lint on Linux, Windows and MacOS.
 
 The lintner versions are:
