@@ -46,7 +46,7 @@ steps:
       use-mypy: false
       use-vulture: true
       extra-pylint-options: "--output-format="colorized"
-      python-version: "3.7"
+      python-version: "3.8"
 ```
 
 ### Examples
@@ -54,7 +54,7 @@ steps:
 
 ## Details
 
-Uses `actions/setup-python@v2`. Only python `3.7` - `3.10` version are tested since
+Uses `actions/setup-python@v2`. Only python `3.8` - `3.10` version are tested since
 they are by far most common now. Other python `3.x` versions should also work.
 Any python `2.x` versions are unsupported! You can lint on Linux, Windows and MacOS.
 
@@ -112,9 +112,9 @@ jobs:
         use-pylint: false
         use-flake8: false
         use-vulture: true
-        python-version: "3.7"
+        python-version: "3.8"
     - run: |
-        python --version  # this will output 3.7 now !!!
+        python --version  # this will output 3.8 now !!!
 ```
 
 ## License
