@@ -64,7 +64,7 @@ The lintner versions are:
 ```bash
 pycodestyle==2.8.0
 pydocstyle==6.1.1
-pylint==2.12.1
+pylint==3.1.0
 mypy==0.910
 black==21.11b1
 flake8==4.0.1
