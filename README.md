@@ -30,7 +30,7 @@ Basic:
 
 ```yml
 steps:
-  - uses: actions/checkout@v1
+  - uses: actions/checkout@v4
   - uses: marian-code/python-lint-annotate@v3
 ```
 
@@ -38,7 +38,7 @@ Options:
 
 ```yml
 steps:
-  - uses: actions/checkout@v1
+  - uses: actions/checkout@v4
   - uses: marian-code/python-lint-annotate@v3
     with:
       python-root-list: "src/ tests/*"  # accepts wildcards
@@ -54,7 +54,7 @@ steps:
 
 ## Details
 
-Uses `actions/setup-python@v2`. Only python `3.7` - `3.10` version are tested since
+Uses `actions/setup-python@v5`. Only python `3.7` - `3.10` version are tested since
 they are by far most common now. Other python `3.x` versions should also work.
 Any python `2.x` versions are unsupported! You can lint on Linux, Windows and MacOS.
 
@@ -73,9 +73,9 @@ isort==5.10.1
 
 ## IMPORTANT - test environment
 
-The python version is set by `actions/setup-python@v2` using composite actions. This
+The python version is set by `actions/setup-python@v5` using composite actions. This
 means that the the action will change python you might have previously set with
-`actions/setup-python@v2`. There are two ways to circumvent this.
+`actions/setup-python@v5`. There are two ways to circumvent this.
 
 - Keep the lintnig action separated from others
 - Use it at the and of your workflow when the change in python version will not
@@ -93,8 +93,8 @@ jobs:
     name: Lint Python
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-python@v2
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
       with:
         python-version: 3.9
     - run: |
