@@ -1,0 +1,20 @@
+name: Install requirements from pipenv and lint all files
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize, edited ]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v3
+      - name: Set up Python environment
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.8"
+      - name: Generate requirements.txt file
+        run: |
+          pip install pipenv
+          pipenv requirements > requirements.txt
+      - uses: marian-code/python-lint-annotate@v3

@@ -49,8 +49,13 @@ steps:
       python-version: "3.8"
 ```
 
-### Examples
+> :information_source: python-lint-annotate expects a `requirements.txt` file in your project.
+> See example to generate one with `pipenv`.
+> Leave an empty one if needed.
+
+### More Examples
 * [Only lint changed files, and ignore missing docstrings](examples/actions-only_changed_files.yml)
+* [Install requirements from pipenv and lint all files](examples/actions-pipenv_requirements.yml)
 
 ## Details
 
@@ -59,18 +64,7 @@ Uses `actions/setup-python@v5`. Only python `3.8` - `3.10` versions prior to `3.
 are not tested since they are EOL now.
 Any python `2.x` versions are unsupported! You can lint on Linux, Windows and MacOS.
 
-The lintner versions are:
-
-```bash
-pycodestyle==2.8.0
-pydocstyle==6.1.1
-pylint==2.12.1
-mypy==0.910
-black==21.11b1
-flake8==4.0.1
-vulture==2.3
-isort==5.10.1
-```
+The linter versions are defined in [requirements.txt](requirements.txt)
 
 ## IMPORTANT - test environment
 
