@@ -31,7 +31,7 @@ Basic:
 ```yml
 steps:
   - uses: actions/checkout@v4
-  - uses: marian-code/python-lint-annotate@v3
+  - uses: marian-code/python-lint-annotate@v4
 ```
 
 Options:
@@ -39,7 +39,7 @@ Options:
 ```yml
 steps:
   - uses: actions/checkout@v4
-  - uses: marian-code/python-lint-annotate@v3
+  - uses: marian-code/python-lint-annotate@v4
     with:
       python-root-list: "src/ tests/*"  # accepts wildcards
       use-pycodestyle: false
@@ -100,7 +100,7 @@ jobs:
     - run: |
         python --version  # this will output 3.9 now
         run tests or other things using python ...
-    - uses: marian-code/python-lint-annotate@v3
+    - uses: marian-code/python-lint-annotate@v4
       with:
         python-root-list: "./tests/*.py"
         use-black: true
