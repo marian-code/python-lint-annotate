@@ -58,18 +58,7 @@ Uses `actions/setup-python@v5`. Only python `3.8` - `3.12` versions are tested.
 Python `3.x` versions prior to `3.8` are not tested since they are EOL now.
 Any python `2.x` versions are unsupported! You can lint on Linux, Windows and MacOS.
 
-The lintner versions are:
-
-```bash
-pycodestyle==2.8.0
-pydocstyle==6.1.1
-pylint==3.1.0
-mypy==0.910
-black==21.11b1
-flake8==4.0.1
-vulture==2.3
-isort==5.10.1
-```
+The linter versions are defined in [requirements.txt](requirements.txt).
 
 ## IMPORTANT - test environment
 
