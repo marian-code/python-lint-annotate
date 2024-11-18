@@ -76,11 +76,17 @@ inputs:
     description: "Set desired python version with this keyword"
     required: false
     default: "3.8"
+  use-external-python:
+    description: "false (default): Install a new Python for this action; true: use the python installation in the previous steps"
+    type: boolean
+    required: false
+    default: false
 
 runs:
   using: "composite"
   steps:
     - name: Setup python
+      if: ${{ ! inputs.use-external-python }}
       uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
@@ -93,13 +99,13 @@ runs:
     - name: Windows install dependencies
       if: ${{ runner.os == 'Windows' }}
       run:  |
-        pip install -r ${{ github.action_path }}\requirements.txt
+        pip install -r ${{ github.action_path }}\requirements.txt --ignore-installed
         echo "path_sep=" >> $GITHUB_ENV
       shell: pwsh
 
     - name: Posix install dependencies
       if: ${{ runner.os != 'Windows' }}
-      run:  pip install -r ${{ github.action_path }}/requirements.txt
+      run:  pip install -r ${{ github.action_path }}/requirements.txt --ignore-installed
       shell: bash
 
     - name: Lint on Windows

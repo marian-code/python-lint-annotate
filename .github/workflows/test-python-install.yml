@@ -1,0 +1,55 @@
+on:
+  push:
+  pull_request:
+name: Check python installation
+jobs:
+  pythoninstall:
+    name: Test Python install
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ['3.11']
+        use-external-python: [true, false]
+    env:
+      python-test-package: python-dummy
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install Python if required
+      if: ${{ matrix.use-external-python }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install a test dependency if external Python is used
+      if: ${{ matrix.use-external-python }}
+      run:
+        pip install ${{ env.python-test-package }}
+
+    - name: Test Action usage
+      uses: ./
+      with:
+        python-root-list: "./tests/*.py ./tests/subtest/*.py"
+        use-black: true
+        use-isort: true
+        use-mypy: true
+        use-pycodestyle: true
+        use-pydocstyle: true
+        extra-pycodestyle-options: "--max-line-length=88"
+        use-pylint: false
+        use-flake8: false
+        use-vulture: true
+        python-version: ${{ matrix.python-version }}
+        use-external-python: ${{ matrix.use-external-python }}
+
+    - name: Check if test dependency exists after execution
+      run: |
+        pip freeze > all-deps.txt
+        should_appear=$( if [[ "${{ matrix.use-external-python }}" == "true" ]]; then echo 0; else echo 1; fi )
+        line_exists=$( grep -qF "${{ env.python-test-package }}" "all-deps.txt"; echo $? )
+        echo "test package should be installed: ${{ matrix.use-external-python }}"
+        echo "test package is present (0 = present): ${line_exists}"
+        cat all-deps.txt
+        test "${should_appear}" == "${line_exists}"
+      
