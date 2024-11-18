@@ -1,8 +1,8 @@
-black==21.11b1
-flake8==4.0.1
-isort==5.10.1
-mypy~=0.961
-pycodestyle==2.8.0
-pydocstyle==6.1.1
+black==24.3.0
+flake8==7.0.0
+isort==5.13.2
+mypy~=1.9.0
+pycodestyle==2.11.1
+pydocstyle==6.3.0
 pylint==3.1.0
-vulture==2.3
+vulture==2.11
