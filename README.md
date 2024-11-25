@@ -12,6 +12,8 @@ selected linters.
 - Zero configuration based: Add a single line in your CI and done!
 - GitHub Annotations on PR: Highlights issues inline on the PR diff.
 - Most of the popular community trusted linters in one place.
+- Allows to use either a new or existing Python version using `use-external-python`.
+See [this example](examples/actions-use_external_python.yml).
 
 ## Linters supported
 

@@ -24,7 +24,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: marian-code/python-lint-annotate@master
+    - uses: ./
       with:
         python-root-list: "./tests/*.py ./tests/subtest/*.py"
         use-black: true
